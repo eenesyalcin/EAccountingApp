@@ -1,4 +1,5 @@
 ﻿using eAccountingServer.Application.Behaviors;
+using eAccountingServer.Domain.Entities;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +13,9 @@ namespace eAccountingServer.Application
 
             services.AddMediatR(conf =>
             {
-                conf.RegisterServicesFromAssemblies(typeof(DependencyInjection).Assembly);
+                conf.RegisterServicesFromAssemblies(
+                    typeof(DependencyInjection).Assembly,
+                    typeof(AppUser).Assembly);
                 conf.AddOpenBehavior(typeof(ValidationBehavior<,>));
             });
 

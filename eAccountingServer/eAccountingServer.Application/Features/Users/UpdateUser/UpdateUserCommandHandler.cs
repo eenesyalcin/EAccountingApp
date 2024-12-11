@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eAccountingServer.Domain.Entities;
+using eAccountingServer.Domain.Events;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -8,6 +9,7 @@ using TS.Result;
 namespace eAccountingServer.Application.Features.Users.UpdateUser;
 
 internal sealed class UpdateUserCommandHandler(
+    IMediator mediator,
     UserManager<AppUser> userManager,
     IMapper mapper) : IRequestHandler<UpdateUserCommand, Result<string>>
 {
@@ -66,7 +68,7 @@ internal sealed class UpdateUserCommandHandler(
 
         if (isMailChanged)
         {
-            // Tekrardan Onay Maili Gönder
+            await mediator.Publish(new AppUserEvent(appUser.Id));
         }
 
         return "Kullanıcı bilgileri başarıyla güncellendi";
