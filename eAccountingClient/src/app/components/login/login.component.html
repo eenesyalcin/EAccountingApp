@@ -36,6 +36,34 @@
                     <span role="status">Giriş yapılıyor...</span>
                 </button>
             }
+
+            <div style="margin-top: 5px;">
+                <a data-toggle="modal" data-target href="#sendConfirmEmailModal">
+                    <p class="text-center">Onay Mailini Tekrar Gönder</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="sendConfirmEmailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Onay Maili Gönder</h1>
+                <button type="button" #sendConfirmEmailModalCloseBtn data-dismiss="modal" aria-label="Close" class="btn btn-outline-danger">
+                    <i class="fa-solid fa-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mail Adresi</label>
+                    <input type="email" [(ngModel)]="email" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="sendConfirmEmail()" type="button" class="btn btn-primary">Gönder</button>
+            </div>
         </div>
     </div>
 </div>
