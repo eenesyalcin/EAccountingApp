@@ -9,6 +9,8 @@ namespace eAccountingServer.Application
     {
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
+            services.AddFluentEmail("info@emuhasebe.com").AddSmtpSender("localhost", 2525);
+
             services.AddAutoMapper(typeof(DependencyInjection).Assembly);
 
             services.AddMediatR(conf =>
