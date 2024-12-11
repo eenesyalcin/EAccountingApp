@@ -9,4 +9,4 @@ public sealed record UpdateUserCommand(
     string LastName,
     string UserName,
     string Email,
-    string Password) : IRequest<Result<string>>;
+    string? Password) : IRequest<Result<string>>;

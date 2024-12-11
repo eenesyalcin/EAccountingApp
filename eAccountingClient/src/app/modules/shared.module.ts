@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { TrCurrencyPipe } from 'tr-currency';
 import { FlexiGridModule } from 'flexi-grid';
 import { FlexiSelectModule } from 'flexi-select';
+import { FormValidateDirective } from 'form-validate-angular';
 
 
 
@@ -19,7 +20,8 @@ import { FlexiSelectModule } from 'flexi-select';
     FormsModule,
     TrCurrencyPipe,
     FlexiGridModule,
-    FlexiSelectModule
+    FlexiSelectModule,
+    FormValidateDirective
   ],
   exports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { FlexiSelectModule } from 'flexi-select';
     FormsModule,
     TrCurrencyPipe,
     FlexiGridModule,
-    FlexiSelectModule
+    FlexiSelectModule,
+    FormValidateDirective
   ]
 })
 export class SharedModule { }
