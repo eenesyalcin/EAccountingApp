@@ -12,6 +12,8 @@ namespace eAccountingServer.Infrastructure.Context
         {
         }
 
+        public DbSet<Company> Companies { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(DependencyInjection).Assembly);
