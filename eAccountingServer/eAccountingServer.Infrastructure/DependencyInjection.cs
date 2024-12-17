@@ -1,4 +1,5 @@
 ﻿using eAccountingServer.Domain.Entities;
+using eAccountingServer.Domain.Repositories;
 using eAccountingServer.Infrastructure.Context;
 using eAccountingServer.Infrastructure.Options;
 using GenericRepository;
@@ -15,12 +16,15 @@ namespace eAccountingServer.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddScoped<CompanyDbContext>();
+
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("SqlServer"));
             });
 
             services.AddScoped<IUnitOfWork>(srv => srv.GetRequiredService<ApplicationDbContext>());
+            services.AddScoped<IUnitOfWorkCompany>(srv => srv.GetRequiredService<CompanyDbContext>());
 
             services
                 .AddIdentity<AppUser, IdentityRole<Guid>>(cfr =>
